@@ -8,13 +8,21 @@ import 'objects/ground_block.dart';
 import 'objects/platform_block.dart';
 import 'objects/star.dart';
 import 'actors/ember.dart';
+import 'overlays/hud.dart';
+import 'dart:io' show Platform;
 
-class EmberQuestGame extends FlameGame with HasKeyboardHandlerComponents {
+import 'overlays/mobile_controls.dart';
+
+class EmberQuestGame extends FlameGame with HasCollisionDetection, HasKeyboardHandlerComponents {
   late EmberPlayer _ember;
   double objectSpeed = 0.0;
 
   late double lastBlockXPosition = 0.0;
   late UniqueKey lastBlockKey;
+  bool isMobile = false;
+
+  int starsCollected = 0;
+  int health = 3;
 
   @override
   Color backgroundColor() {
@@ -34,7 +42,7 @@ class EmberQuestGame extends FlameGame with HasKeyboardHandlerComponents {
     ]);
 
     camera.viewfinder.anchor = Anchor.topLeft;
-    initializeGame();
+    initializeGame(true);
   }
 
   void loadGameSegments(int segmentIndex, double xPositionOffset) {
@@ -70,7 +78,12 @@ class EmberQuestGame extends FlameGame with HasKeyboardHandlerComponents {
     }
   }
 
-  void initializeGame() {
+  void initializeGame(bool loadHud) {
+    if (Platform.isIOS || Platform.isAndroid) {
+      isMobile = true;
+    } else {
+      isMobile = false;
+    }
     // Assume that size.x < 3200
     final segmentsToLoad = (size.x / 640).ceil();
     segmentsToLoad.clamp(0, segments.length);
@@ -80,9 +93,32 @@ class EmberQuestGame extends FlameGame with HasKeyboardHandlerComponents {
     }
 
     _ember = EmberPlayer(
-      position: Vector2(128, canvasSize.y - 70),
+      position: Vector2(128, canvasSize.y - 128),
     );
-    world.add(_ember);
+    add(_ember);
+
+    if (loadHud) {
+      add(Hud());
+    }
+
+    if (isMobile) {
+      add(MobileControls());
+    } else {
+    }
+  }
+
+  void reset() {
+    starsCollected = 0;
+    health = 3;
+    initializeGame(false);
+  }
+
+  @override
+  void update(double dt) {
+    if (health <= 0) {
+      overlays.add('GameOver');
+    }
+    super.update(dt);
   }
 
 }
