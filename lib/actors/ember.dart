@@ -45,6 +45,10 @@ class EmberPlayer extends SpriteAnimationComponent
 
   @override
   void update(double dt) {
+    // update controller state - should be refactored to remove internal state
+    horizontalDirection = game.controllerManager.horizontalDirection;
+    hasJumped = game.controllerManager.hasJumped;
+
     velocity.x = horizontalDirection * moveSpeed;
     position += velocity * dt;
     if (horizontalDirection < 0 && scale.x > 0) {
@@ -92,22 +96,6 @@ class EmberPlayer extends SpriteAnimationComponent
     }
 
     super.update(dt);
-  }
-
-  @override
-  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    hasJumped = keysPressed.contains(LogicalKeyboardKey.space);
-    horizontalDirection = 0;
-    horizontalDirection += (keysPressed.contains(LogicalKeyboardKey.keyA) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowLeft))
-        ? -1
-        : 0;
-    horizontalDirection += (keysPressed.contains(LogicalKeyboardKey.keyD) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowRight))
-        ? 1
-        : 0;
-
-    return true;
   }
 
   @override

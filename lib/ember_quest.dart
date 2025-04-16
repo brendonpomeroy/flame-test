@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:flame/components.dart';
 import 'actors/water_enemy.dart';
+import 'managers/controller_manager.dart';
 import 'managers/segment_manager.dart';
 import 'objects/ground_block.dart';
 import 'objects/platform_block.dart';
@@ -11,7 +12,7 @@ import 'actors/ember.dart';
 import 'overlays/hud.dart';
 import 'dart:io' show Platform;
 
-import 'overlays/mobile_controls.dart';
+import 'overlays/mobile_controller.dart';
 
 class EmberQuestGame extends FlameGame with HasCollisionDetection, HasKeyboardHandlerComponents {
   late EmberPlayer _ember;
@@ -23,6 +24,8 @@ class EmberQuestGame extends FlameGame with HasCollisionDetection, HasKeyboardHa
 
   int starsCollected = 0;
   int health = 3;
+
+  late ControllerManager controllerManager;
 
   @override
   Color backgroundColor() {
@@ -84,6 +87,14 @@ class EmberQuestGame extends FlameGame with HasCollisionDetection, HasKeyboardHa
     } else {
       isMobile = false;
     }
+
+    controllerManager = ControllerManager();
+    add(controllerManager);
+
+    if (isMobile) {
+      overlays.add('MobileController');
+    }
+
     // Assume that size.x < 3200
     final segmentsToLoad = (size.x / 640).ceil();
     segmentsToLoad.clamp(0, segments.length);
@@ -99,11 +110,6 @@ class EmberQuestGame extends FlameGame with HasCollisionDetection, HasKeyboardHa
 
     if (loadHud) {
       add(Hud());
-    }
-
-    if (isMobile) {
-      add(MobileControls());
-    } else {
     }
   }
 
