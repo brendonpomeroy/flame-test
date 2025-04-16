@@ -1,16 +1,10 @@
 # game_test
 
-A new Flutter project.
+This is Just a project testing out flutter flame.
+It is based on the Flutter Flame Ember Quest tutorial. The only difference
+being that the controls have been moved into a controller manager to
+respond to both keyboard and touch events.
 
-## Getting Started
+A mobile controller was added to support playing on a touchscreen device.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
