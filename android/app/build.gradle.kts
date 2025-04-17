@@ -1,3 +1,12 @@
+import java.io.File
+import java.util.*
+
+val keystoreProperties =
+        Properties().apply {
+            var file = File("key.properties")
+            if (file.exists()) load(file.reader())
+        }
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
