@@ -1,4 +1,4 @@
-package com.brendonroberts.flame-test
+package com.brendonroberts.flame_test
 
 import io.flutter.embedding.android.FlutterActivity
 
