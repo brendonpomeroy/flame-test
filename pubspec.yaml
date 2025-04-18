@@ -1,5 +1,5 @@
-name: syzygy
-description: Syzygy Flame game
+name: flame_test
+description: Flame game
 version: 0.0.0
 publish_to: none
 
@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flame: ^1.27.0
   shared_preferences: ^2.5.3
+  flutter_launcher_icons: ^0.14.3
 
 flutter:
   uses-material-design: true
