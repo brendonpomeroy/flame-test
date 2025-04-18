@@ -25,7 +25,7 @@ class EmberQuestGame extends FlameGame with HasCollisionDetection, HasKeyboardHa
   int health = 3;
 
   late ControllerManager controllerManager;
-  late final HighscoreManager highscoreManager;
+  late HighscoreManager highscoreManager;
 
   @override
   Color backgroundColor() {
