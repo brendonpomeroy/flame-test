@@ -13,7 +13,8 @@ import 'actors/ember.dart';
 import 'overlays/hud.dart';
 import 'dart:io' show Platform;
 
-class EmberQuestGame extends FlameGame with HasCollisionDetection, HasKeyboardHandlerComponents {
+class EmberQuestGame extends FlameGame
+    with HasCollisionDetection, HasKeyboardHandlerComponents {
   late EmberPlayer _ember;
   double objectSpeed = 0.0;
 
@@ -129,5 +130,4 @@ class EmberQuestGame extends FlameGame with HasCollisionDetection, HasKeyboardHa
     }
     super.update(dt);
   }
-
 }

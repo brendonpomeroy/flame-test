@@ -14,7 +14,8 @@ class MobileController extends StatelessWidget {
     bool jump = false;
 
     void updateInput() {
-      game.controllerManager.updateFromMobile(horizontal: horizontal, jump: jump);
+      game.controllerManager
+          .updateFromMobile(horizontal: horizontal, jump: jump);
     }
 
     return Stack(
@@ -40,7 +41,11 @@ class MobileController extends StatelessWidget {
                 border: Border.all(color: Colors.white, width: 2),
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: const Icon(Icons.arrow_left_rounded, size: 50, color: Colors.white,),
+              child: const Icon(
+                Icons.arrow_left_rounded,
+                size: 50,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
@@ -66,7 +71,11 @@ class MobileController extends StatelessWidget {
                 border: Border.all(color: Colors.white, width: 2),
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: const Icon(Icons.arrow_right_rounded, size: 50, color: Colors.white,),
+              child: const Icon(
+                Icons.arrow_right_rounded,
+                size: 50,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
@@ -92,7 +101,11 @@ class MobileController extends StatelessWidget {
               ),
               width: 60,
               height: 60,
-              child: const Icon(Icons.arrow_drop_up_rounded, size: 50, color: Colors.white, ),
+              child: const Icon(
+                Icons.arrow_drop_up_rounded,
+                size: 50,
+                color: Colors.white,
+              ),
             ),
           ),
         ),

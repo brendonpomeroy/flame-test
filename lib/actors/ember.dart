@@ -101,7 +101,7 @@ class EmberPlayer extends SpriteAnimationComponent
       if (intersectionPoints.length == 2) {
         // Calculate the collision normal and separation distance.
         final mid = (intersectionPoints.elementAt(0) +
-            intersectionPoints.elementAt(1)) /
+                intersectionPoints.elementAt(1)) /
             2;
 
         final collisionNormal = absoluteCenter - mid;
@@ -146,8 +146,8 @@ class EmberPlayer extends SpriteAnimationComponent
           repeatCount: 5,
         ),
       )..onComplete = () {
-        hitByEnemy = false;
-      },
+          hitByEnemy = false;
+        },
     );
   }
 }

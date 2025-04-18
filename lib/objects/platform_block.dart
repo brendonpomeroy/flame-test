@@ -18,7 +18,8 @@ class PlatformBlock extends SpriteComponent
   void onLoad() {
     final platformImage = game.images.fromCache('block.png');
     sprite = Sprite(platformImage);
-    position = Vector2((gridPosition.x * size.x) + xOffset,
+    position = Vector2(
+      (gridPosition.x * size.x) + xOffset,
       game.size.y - (gridPosition.y * size.y),
     );
     add(RectangleHitbox(collisionType: CollisionType.passive));
