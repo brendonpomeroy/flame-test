@@ -16,11 +16,11 @@ class ControllerManager extends Component with KeyboardHandler {
 
     horizontalDirection = 0;
     horizontalDirection += (keysPressed.contains(LogicalKeyboardKey.keyA) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowLeft))
+            keysPressed.contains(LogicalKeyboardKey.arrowLeft))
         ? -1
         : 0;
     horizontalDirection += (keysPressed.contains(LogicalKeyboardKey.keyD) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowRight))
+            keysPressed.contains(LogicalKeyboardKey.arrowRight))
         ? 1
         : 0;
 

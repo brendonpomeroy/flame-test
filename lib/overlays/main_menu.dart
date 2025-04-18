@@ -36,7 +36,13 @@ class MainMenu extends StatelessWidget {
                   fontSize: 24,
                 ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
+              Text("High Score: ${game.highscoreManager.highscore}",
+                  style: const TextStyle(
+                    color: whiteTextColor,
+                    fontSize: 18,
+                  )),
+              const SizedBox(height: 20),
               SizedBox(
                 width: 200,
                 height: 75,
